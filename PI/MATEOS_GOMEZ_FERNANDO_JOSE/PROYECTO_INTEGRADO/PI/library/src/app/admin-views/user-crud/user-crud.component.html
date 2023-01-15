@@ -1,0 +1,34 @@
+<app-top-bar-admin></app-top-bar-admin>
+<h1 class="text-center my-4">Alta de usuarios</h1>
+<div class="row">
+    <form class="frame" [formGroup]="formUser">
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" (change)="onFileChange($event)" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01" />
+                <label class="custom-file-label" for="inputGroupFile01">Deje el archivo CSV,XSLX o XSL</label>
+            </div>
+        </div>
+        <input type="submit" value="Enviar" class="btn btn-lg submit btn-danger btn-block my-5" [disabled]="!fine" />
+    </form>
+    <div class="col-12">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of bookService.user">
+                    <th>{{user.ID}}</th>
+                    <td>{{user.NAME}}</td>
+                    <td>{{user.SURNAMES}}</td>
+                    <td>{{user.EMAIL}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

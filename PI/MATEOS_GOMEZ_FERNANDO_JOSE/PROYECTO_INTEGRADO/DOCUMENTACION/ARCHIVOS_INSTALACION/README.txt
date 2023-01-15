@@ -1,0 +1,1 @@
+Necesario instalar Node 15 y XAMPP con PHP 7

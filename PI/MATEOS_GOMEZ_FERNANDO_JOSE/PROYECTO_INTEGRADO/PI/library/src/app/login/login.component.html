@@ -1,0 +1,27 @@
+<form class="w45 p-3" [formGroup]="loginForm" (submit)="checkUser()">
+    <img class=" mb-4" src="assets/CSS/IMG/fotoLogin.jpg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Bienvenido</h1>
+    <div class="form-group">
+        <label for="inputid" class="sr-only">DNI</label>
+        <input type="text" id="inputid" formControlName="dni" class="form-control" placeholder="DNI" autofocus="">
+        <div *ngIf="dni.invalid && dni.touched">
+            <div class="alert alert-dark" *ngIf="dni.touched && dni.invalid && dni.errors.pattern" role="alert">
+                No es un dni
+            </div>
+            <div class="alert alert-dark" *ngIf="dni.errors.required" role="alert">
+                Campo obligatorio
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" formControlName="password" class="form-control"
+            placeholder="Contraseña">
+        <div class="alert alert-dark"
+            *ngIf="password.invalid && (password.touched || password.dirty) && password.errors.required" role="alert">
+            Campo obligatorio
+        </div>
+
+    </div>
+    <input type="submit" value="Enviar" [disabled]="!loginForm.valid" class="btn btn-lg submit btn-danger btn-block" />
+</form>

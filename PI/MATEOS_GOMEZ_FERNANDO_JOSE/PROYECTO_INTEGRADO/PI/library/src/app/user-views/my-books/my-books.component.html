@@ -1,0 +1,42 @@
+<app-top-bar-user></app-top-bar-user>
+<div>
+    <h3 class="text-center">Libros en préstamo</h3>
+</div>
+<div *ngIf="userService.bookStatus1!=[]">
+    <div *ngFor="let fault of userService.bookStatus1">
+        <div class="alert alert-warning" role="alert">
+            <article>Isbn: {{fault.ISBN}}</article>
+            <article>Titulo: {{fault.TITLE}}</article>
+            <article>Editorial: {{fault.PUBLISHING_HOUSE}}</article>
+            <article>Tema: {{fault.TOPIC}}</article>
+            <article>Asignatura: {{fault.SUBJECT}}</article>
+            <article>Quedan actualmente {{fault.STOCK}} ejemplares en la biblioteca</article>
+            <article>Fecha de prestamo: {{fault.BORROW_DATE}}</article>
+            <article>Fecha de devolución: {{fault.RETURN_DATE}}</article>
+            <article><button type="button" class="btn btn-primary" (click)="renewBook(fault.ISBN)">Renovar</button>
+            </article>
+        </div>
+    </div>
+</div>
+<div *ngIf="userService.bookStatus1.length==0">
+    <h2 class="text-center font-italic py-5">No tiene prestado ningún libro actualmente</h2>
+</div>
+<div>
+    <h3 class="text-center">Libros solicitados</h3>
+</div>
+<div *ngIf="userService.bookStatus2!=[]">
+    <div *ngFor="let fault of userService.bookStatus2">
+        <div class="alert alert-primary" role="alert">
+            <article>Isbn: {{fault.ISBN}}</article>
+            <article>Titulo: {{fault.TITLE}}</article>
+            <article>Editorial: {{fault.PUBLISHING_HOUSE}}</article>
+            <article>Tema: {{fault.TOPIC}}</article>
+            <article>Asignatura: {{fault.SUBJECT}}</article>
+            <article>Fecha de solicitud: {{fault.REQUEST_DATE}}</article>
+            <article>Quedan actualmente {{fault.STOCK}} ejemplares en la biblioteca</article>
+        </div>
+    </div>
+</div>
+<div *ngIf="userService.bookStatus2.length==0">
+    <h2 class="text-center font-italic py-5">No ha solicitado ningún libro</h2>
+</div>
